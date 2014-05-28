@@ -62,13 +62,13 @@ class bytesTests extends Specification with matcher.DataTables {
                     0L !      "0B"   !          "0B" |
                    27L !     "27B"   !         "27B" |
                   999L !    "999B"   !        "999B" |
-                 1000L !   "1.0kB"   !       "1.0kB" |
+                 1010L !  "1.01kB"   !      "1.01kB" |
                  1700L !   "1.7kB"   !       "1.7kB" |
                110600L ! "110.6kB"   !     "110.6kB" |
               7100000L !   "7.1MB"   !       "7.1MB" |
             453000000L ! "453.0MB"   !     "453.0MB" |
           29000000000L !  "29.0GB"   !      "29.0GB" |
-        1900000000000L !   "1.9TB"   !       "1.9TB" |
+        1900900000000L !"1.9009TB"   !    "1.9009TB" |
      8400000000000000L !   "8.4PB"   !       "8.4PB" |
   9200000000000000000L !   "9.2EB"   !       "9.2EB" |> { (a, b, c) => (humanBytesToLong(b), humanBytesToLong(c)) must_== (a, a)}
   }
@@ -85,12 +85,19 @@ class bytesTests extends Specification with matcher.DataTables {
               7130316L !    "6.8MiB"        !    "6.8 MiB"    |
             452984832L !  "432.0MiB"        !  "432.0 MiB"    |
           28991029248L !   "27.0GiB"        !   "27.0 GiB"    |
-        1869169767219L !    "1.7TiB"        !    "1.7 TiB"    |
+        1870159327684L ! "1.7009TiB"        ! "1.7009 TiB"    |
      9457559217478041L !    "8.4PiB"        !    "8.4 PiB"    |
   9108079886394091110L !    "7.9EiB"        !    "7.9 EiB"    |> { (a, b, c) => (humanBytesToLong(b), humanBytesToLong(c)) must_== (a, a)}
+  }
+  The SI representation parsing should round down a number of bytes with decimal places ${
+    humanBytesToLong("1.0009kB") must_== 1000L
+  }
+  The binary representation parsing should round down a number of bytes with decimal places ${
+    humanBytesToLong("1.0009KiB") must_== 1024L
   }
   When the string parsed is not valid an IllegalArgumentException should be thrown ${
     humanBytesToLong("!B") must throwA[IllegalArgumentException]
   }
+
   """
 }
