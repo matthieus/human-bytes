@@ -13,32 +13,13 @@ Features include
 <table>
 <thead>
 <tr>
-  <th COLSPAN="6">Prefixes used for bytes (B)</th>
+  <th colspan="6">Prefixes used for bytes (B)</th>
 </tr>
 </thead>
-<tbody><tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
+<tbody>
 <tr>
-  <td>Decimal (SI)</td>
-  <td></td>
-  <td></td>
-  <td>Binary (IEC)</td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
+  <td colspan="3">Decimal (SI)</td>
+  <td colspan="3">Binary (IEC)</td>
 </tr>
 <tr>
   <td>1000</td>
@@ -90,35 +71,38 @@ Features include
 </tr>
 </tbody></table>
 
-  See http://en.wikipedia.org/wiki/Byte for a discussion on the subject.
+See http://en.wikipedia.org/wiki/Byte for a discussion on the subject.
 
-  Note: The ambiguous JEDEC standard is not supported.
+_Note:_ The ambiguous JEDEC standard is not supported.
 
 ### Usage ###
 
 #### The DSL ####
-    import com.bizo.bytes._
-    // if you want to use the postfix notation (space between the value and the unit.)
-    import scala.language.postfixOps
+```scala
+import com.bizo.bytes._
+// if you want to use the postfix notation (space between the value and the unit.)
+import scala.language.postfixOps
 
-    val sizeSI = 10.kB
-    val sizeBinary = 10.KiB
-    // or with the postfix notation
-    val biggerSizeSI = 10 EB
-    val biggerSizeBinary = 10 EiB
-
+val sizeSI = 10.kB
+val sizeBinary = 10.KiB
+// or with the postfix notation
+val biggerSizeSI = 10 EB
+val biggerSizeBinary = 10 EiB
+```
 #### Formatting a Long as byte quantities ####
-    import com.bizo.bytes._
+```scala
+import com.bizo.bytes._
 
-    println(SI(123456))  // prints 123.5kB
-    println(BIN(123456)) // prints 120.6KiB
- 
+println(SI(123456))  // prints 123.5kB
+println(BIN(123456)) // prints 120.6KiB
+```
 #### Parsing byte quantities ####
-    import com.bizo.bytes._
+```scala
+import com.bizo.bytes._
 
-    val bytes = humanBytesToLong("123kB")  // 123000L
-    val bytes = humanBytesToLong("123KiB") // 125952L
-
+val bytes = humanBytesToLong("123kB")  // 123000L
+val bytes = humanBytesToLong("123KiB") // 125952L
+```
 ### Building ###
 
 You need SBT 0.13 or higher.
