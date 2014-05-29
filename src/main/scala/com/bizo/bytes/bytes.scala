@@ -24,7 +24,7 @@ package com.bizo
  *
  * See http://en.wikipedia.org/wiki/Byte for a discussion on the subject.
  *
- * Note: The ambiguous JEDEC standard is not supported.
+ * Note: The ambiguous JEDEC old standard (deprecated in most contexts) is not supported.
  *
  * ==Overview==
  *
