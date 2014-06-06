@@ -121,3 +121,7 @@ You need SBT 0.13 or higher.
 
 human-bytes is is licensed under the terms of the
 [Apache Software License v2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+
+### Copyright ###
+
+Unless otherwise noted, all source files in this repository are Copyright (C) Bizo, inc.  2014
